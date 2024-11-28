@@ -5,7 +5,8 @@ import SwiftUI
 public final actor PreviewLogger: Sendable {
     // LogLevel: Defines severity levels for logging
     public enum LogLevel: Int, Sendable {
-        case debug = 0, info, warning, error
+        case debug = 0
+        case info, warning, error
 
         public var description: String {
             switch self {
@@ -39,23 +40,27 @@ public final actor PreviewLogger: Sendable {
         line: Int = #line
     ) {
         #if DEBUG
-        // Only log in preview environments
-        guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" else { return }
-        // Check if the message meets the current log level
-        guard level.rawValue >= logLevelThreshold.rawValue else { return }
+            // Only log in preview environments
+            guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" else {
+                return
+            }
+            // Check if the message meets the current log level
+            guard level.rawValue >= logLevelThreshold.rawValue else { return }
 
-        let fileName = (file as NSString).lastPathComponent.replacingOccurrences(of: ".swift", with: "")
-        let header = "[\(level.description)] \(fileName) - \(function) (line \(line))"
-        let separator = String(repeating: "-", count: 100)
-        let centeredHeader = header.centered(in: separator)
+            let fileName = (file as NSString).lastPathComponent.replacingOccurrences(
+                of: ".swift", with: "")
+            let header = "[\(level.description)] \(fileName) - \(function) (line \(line))"
+            let separator = String(repeating: "-", count: 100)
+            let centeredHeader = header.centered(in: separator)
 
-        print("""
-        \(separator)
-        \(centeredHeader)
-        \(separator)
-        \(message)
-        \(separator)
-        """)
+            print(
+                """
+                \(separator)
+                \(centeredHeader)
+                \(separator)
+                \(message)
+                \(separator)
+                """)
         #endif
     }
 
@@ -76,13 +81,5 @@ public final actor PreviewLogger: Sendable {
         Task {
             await shared.log(message, level: level, file: file, function: function, line: line)
         }
-    }
-}
-
-// Extension to center a string within a container
-public extension String {
-    func centered(in container: String) -> String {
-        let padding = max(0, container.count - self.count) / 2
-        return String(repeating: " ", count: padding) + self + String(repeating: " ", count: padding)
     }
 }

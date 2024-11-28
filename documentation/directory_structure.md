@@ -1,5 +1,5 @@
 Directory structure in: /Users/raw-e/Desktop/Useful Swift Things/My Packages/LoggingTime
-Generated on November 27, 2024 at 09:19:11 PM 
+Generated on November 27, 2024 at 10:58:28 PM 
 
 [documentation/]
     - directory_structure.md
@@ -19,6 +19,8 @@ Generated on November 27, 2024 at 09:19:11 PM
     - project.pbxproj
 [Sources/]
     [LoggingTime/]
+        [Extensions/]
+            - String+Formatting.swift
         - LoggerForPreviews.swift
 [.swiftpm/]
     [xcode/]
@@ -38,3 +40,4 @@ Generated on November 27, 2024 at 09:19:11 PM
     [configuration/]
 - raw-e_configuration.json
 - Package.swift
+- .swift-format
