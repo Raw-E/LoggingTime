@@ -1,0 +1,6 @@
+---
+description: You must follow this rule when you are trying to make code conicser!
+globs: 
+target: All
+---
+Iteratively refactor the code to minimize the character count as much as possible. After each iteration, assess whether further reduction is achievable. Continue this cycle until no further reductions are possible, then clearly explain why. If you are refactoring a file, consider the whole file as you refactor. Do at least three iterations, but you can do more. You must not rename identifiers (such as variable or function names) and must not comment the code at all.

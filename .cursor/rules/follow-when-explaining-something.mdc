@@ -1,0 +1,6 @@
+---
+description: You should follow this rule when the user asks for an explanation about something!
+globs: *
+target: All
+---
+Try to assess the user's competence level based on their question and any other context you have and respond accordingly! Gather all necessary context before answering the question by examining relevant files or researching on the web.

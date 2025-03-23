@@ -1,0 +1,6 @@
+---
+description: You must follow this rule at the beginning of every one of your responses!
+globs: *
+target: All
+---
+State the names of the rules you are following!
